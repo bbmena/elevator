@@ -14,8 +14,6 @@ public class ElevatorSystem {
     private List<ElevatorCar> elevatorCars;
     private int maxFloor;
     private Queue<PassengerInfo> requests;
-    private List<ElevatorCar> upward;
-    private List<ElevatorCar> downward;
 
     private static ElevatorSystem elevatorSystem = null;
 
@@ -44,7 +42,24 @@ public class ElevatorSystem {
     }
 
     private void cycle(){
+        while(!requests.isEmpty()){
+            PassengerInfo passenger = requests.poll();
+            ElevatorCar closest = findClosest(passenger.getDirection(), passenger.getBeginningFloor());
+        }
+    }
 
+    private ElevatorCar findClosest(Direction dir, int targetFloor){
+        ElevatorCar car = null;
+        int floor = 0;
+        for(ElevatorCar e : elevatorCars){
+            if(e.getCurrentDirection() == dir){
+                if(e.getCurrentFloor() < targetFloor && e.getCurrentFloor() > floor) {
+                    car = e;
+                    floor = e.getCurrentFloor();
+                }
+            }
+        }
+        return car;
     }
 
     public List<ElevatorCar> getElevatorCars() {

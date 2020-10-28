@@ -5,11 +5,13 @@ import java.util.List;
 
 public class ElevatorCar {
     private List<PassengerInfo> passengers;
+    private List<PassengerInfo> requests;
     private Direction currentDirection;
     private int currentFloor;
 
     public ElevatorCar(Direction _currentDirection, int _currentFloor) {
         this.passengers = new ArrayList<>();
+        this.requests = new ArrayList<>();
         this.currentDirection = _currentDirection;
         this.currentFloor = _currentFloor;
     }
