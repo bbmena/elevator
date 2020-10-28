@@ -31,22 +31,34 @@ public class ElevatorSystem {
         return elevatorSystem;
     }
 
+    public void start() throws InterruptedException{
+        while(true){
+            elevatorSystem.cycle();
+        }
+    }
+
     private void addCar(){
         elevatorCars.add(new ElevatorCar(Direction.UP, 1, maxFloor));
     }
 
     public void elevator_request(Direction direction, int beginningFloor, int destinationFloor){
-        requests.add(new PassengerInfo(direction, beginningFloor, destinationFloor));
+        if(beginningFloor > 0 && destinationFloor <= maxFloor){
+            requests.add(new PassengerInfo(direction, beginningFloor, destinationFloor));
+        } else {
+            System.out.println("Invalid request!");
+        }
     }
 
-    private void cycle(){
+    private void cycle() throws InterruptedException{
         for(PassengerInfo p : requests) {
-            //find a car that is on the request floor and heading in the right direction. If non exists, skip the request.
+            // find a car that is on the request floor and heading in the right direction. If none exists, skip the request.
+            // log a message if a passenger is picked up
         }
         for(ElevatorCar e : elevatorCars){
-            //move each car one level in the current direction it is heading.
-            //If car is at max or min floor, reverse direction and then move.
+            e.dropPassengers();
+            e.moveCar();
         }
+       Thread.sleep(1000);
     }
 
     public List<ElevatorCar> getElevatorCars() {

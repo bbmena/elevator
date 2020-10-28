@@ -25,21 +25,32 @@ public class ElevatorCar {
     }
 
     public void moveCar() {
-        if(currentDirection == Direction.DOWN){
+        if(passengers.isEmpty()){
             if(currentFloor > 1){
+                currentDirection = Direction.DOWN;
                 currentFloor--;
-            } else {
-                reverseCar();
-                currentFloor++;
             }
         } else {
-            if(currentFloor < maxFloor){
-                currentFloor++;
+            if(currentDirection == Direction.DOWN){
+                if(currentFloor > 1){
+                    currentFloor--;
+                } else {
+                    reverseCar();
+                    currentFloor++;
+                }
             } else {
-                reverseCar();
-                currentFloor--;
+                if(currentFloor < maxFloor){
+                    currentFloor++;
+                } else {
+                    reverseCar();
+                    currentFloor--;
+                }
             }
         }
+    }
+
+    public void dropPassengers(){
+        //if currentFloor == destination for any passenger, remove passenger from list and send log statement announcing the drop-off
     }
 
     public void addPassenger(PassengerInfo passenger){
