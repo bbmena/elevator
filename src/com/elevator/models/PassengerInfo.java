@@ -2,11 +2,13 @@ package com.elevator.models;
 
 public class PassengerInfo {
     private Direction direction;
-    private int floor;
+    private int beginningFloor;
+    private int destinationFloor;
 
-    public PassengerInfo(Direction _direction, int _floor){
+    public PassengerInfo(Direction _direction, int _floor, int _destination){
         this.direction = _direction;
-        this.floor = _floor;
+        this.beginningFloor = _floor;
+        this.destinationFloor = _destination;
     }
 
     public Direction getDirection() {
@@ -16,10 +18,17 @@ public class PassengerInfo {
         this.direction = direction;
     }
 
-    public int getFloor() {
-        return floor;
+    public int getBeginningFloor() {
+        return beginningFloor;
     }
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setBeginningFloor(int currentFloor) {
+        this.beginningFloor = currentFloor;
+    }
+
+    public int getDestinationFloor() {
+        return destinationFloor;
+    }
+    public void setDestinationFloor(int destinationFloor) {
+        this.destinationFloor = destinationFloor;
     }
 }
