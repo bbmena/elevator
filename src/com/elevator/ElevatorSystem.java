@@ -51,7 +51,8 @@ public class ElevatorSystem {
 
     private void cycle() throws InterruptedException{
         for(PassengerInfo p : requests) {
-            // find a car that is on the request floor and heading in the right direction. If none exists, skip the request.
+            // find a car that is on the request floor and heading in the right direction. If none exists, skip the request
+            // and check for empty cars. If a car is empty move it up one floor.
             // log a message if a passenger is picked up
         }
         for(ElevatorCar e : elevatorCars){
